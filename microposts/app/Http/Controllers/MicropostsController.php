@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\User;
+use App\Micropost;
+
 class MicropostsController extends Controller
 {
     public function index()
     {
+        
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
             $microposts = $user->feed_microposts()->orderBy('created_at', 'desc')->paginate(10);
-
+            
             $data = [
                 'user' => $user,
                 'microposts' => $microposts,

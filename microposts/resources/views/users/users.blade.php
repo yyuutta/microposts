@@ -1,4 +1,7 @@
 @if (count($users) > 0)
+{!! Form::open(['route' => ['users.download', Auth::user()->id]]) !!}
+    {!! Form::submit('Users dawnload', ['class' => 'btn btn-primary btn-default']) !!}
+{!! Form::close() !!}
 {!! $users->render() !!}
 <ul class="media-list">
 @foreach ($users as $user)
